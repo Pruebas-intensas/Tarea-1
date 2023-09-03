@@ -1,4 +1,5 @@
 import password_management
+import generador
 import os
 
 fin = False #por si acaso se sale en otro lado
@@ -25,7 +26,7 @@ while True:
         print("Contraseña incorrecta. Intenta de nuevo")
 
 while not fin:
-    comando = input("Ingresa un comando (agregar, borrar, actualizar, recuperar o fin): ")
+    comando = input("Ingresa un comando (agregar, borrar, actualizar, recuperar, generar o fin): ")
     if comando.lower() == "fin":
         print("Saliendo del programa...")
         break
@@ -53,5 +54,18 @@ while not fin:
         print("Recuperando...")
         nombre = input("Ingresa el login o keyword de la cuenta a recuperar: ")
         print(password_management.get_information(nombre, password))
+    elif comando.lower() == "generar":
+        largo = int(input("Ingresa el largo de la contraseña: "))
+        symb = input("Incluir simbolos? (s/n): ")
+        if symb.lower() == "s" or symb.lower() == "si":
+            symb = True
+        else:
+            symb = False
+        mayus = input("Incluir mayusculas? (s/n): ")
+        if mayus.lower() == "s" or mayus.lower() == "si":
+            mayus = True
+        else:
+            mayus = False
+        print("Contraseña generada", generador.generar(largo, symb, mayus))
     else:
         print("Comando no reconocido")
