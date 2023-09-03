@@ -2,14 +2,16 @@
 
 ## Gestor de contraseñas en Python
 
-Es un gestor de contraseñas local que tiene la opcion de agreagar, eliminar, modificar y ver las contraseñas guardadas. Además existe un modulo para generar constaseñas aleatorias,
-que pueden ser usadas como recomendaciones para las cuentas del usuario.
+Es un gestor de contraseñas local que tiene la opcion de agreagar, eliminar, modificar y ver las contraseñas guardadas. Además existe un modulo para generar constaseñas aleatorias, que pueden ser usadas como recomendaciones para las cuentas del usuario.
 
-## Instalacion
+## Instalación
 
 Instalar [Python](https://www.python.org/) en el sistema.
 
-## Uso
+Installar las dependencias:
+```bash
+pip install -r requirements.txt
+```
 
 ### Supuestos
 
@@ -22,16 +24,21 @@ Instalar [Python](https://www.python.org/) en el sistema.
 7. El generador siempre incluye numeros
 8. EL generador tiene por defecto largo 8, sin caracteres especiales y sin mayusculas.
 
+## Uso
+
 ```bash
-python contraseña.py
+python passwords.py
 ```
 
-Cuando se inicia el programa se pide un comando:
+* Cuando se inicia el programa por primera vez, se pedirá que se ingrese una contraseña nueva
+* Una vez creada, cada vez que se quiera usar el programa se debe ingresar esa contraseña
+
+* El programa provee los siguientes comandos para administrar las contraseñas:
 * Escribir `agregar` y luego ingresar el nombre de usuario y la contraseña. Opcionalmente se pide una palabra clave para recordar la cuenta.
-* Escribir `eliminar` y luego ingresar el nombre de usuario de la cuenta que se desea eliminar.
-* Escribir `actualizar` y luego ingresar el nombre de usuario de la cuenta que se desea modificar. Luego se pide ingresar la nueva contraseña.
-* Escribir `recuperar` y luego ingresar el nombre de usuario de la cuenta que se desea ver.
-* Escribir `fin` para terminar la ejecuccion del programa.
+* Escribir `eliminar` y luego ingresar el nombre de usuario o palabra clave de la cuenta que se desea eliminar.
+* Escribir `actualizar` y luego ingresar el nombre de usuario o palabra clave de la cuenta que se desea modificar. Luego se pide ingresar la nueva contraseña.
+* Escribir `recuperar` y luego ingresar el nombre de usuario o palabra clave de la cuenta que se desea ver.
+* Escribir `fin` para terminar la ejecución del programa.
 
 ## Como contribuir
 
