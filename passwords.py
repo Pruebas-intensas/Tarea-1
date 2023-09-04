@@ -42,35 +42,55 @@ while True:
 while not fin:
     comando = input("Ingresa un comando (agregar, borrar, actualizar, recuperar, generar o fin): ")
     if comando.lower() == "fin":
-        print("Saliendo del programa...")
-        logging.info("Saliendo del programa...")
-        break
+        try:
+            print("Saliendo del programa...")
+            logging.info("Saliendo del programa...")
+            break
+        except:
+            print("Error al salir del programa")
+            logging.warning("Error al salir del programa")
     elif comando.lower() == "agregar":
-        print("Agregando...")
-        nombre = input("Ingresa el login de la cuenta (email o username): ")
-        contraseña = input("Ingresa la contraseña: ")
-        palabra_clave = input("Ingresa una palabra clave (enter para dejar vacio): ")
-        if palabra_clave == "":
-            palabra_clave = None
-        if password_management.store_information(nombre, contraseña, palabra_clave, password)== "Keyword or account already exists":
-            print("La cuenta ya existe")
-            logging.info("[Agregar] - La cuenta ya existe")
-        else:
-            print("Cuenta agregada exitosamente!")
-            logging.info("[Agregar] - Cuenta agregada exitosamente")
+        try:
+            print("Agregando...")
+            nombre = input("Ingresa el login de la cuenta (email o username): ")
+            contraseña = input("Ingresa la contraseña: ")
+            palabra_clave = input("Ingresa una palabra clave (enter para dejar vacio): ")
+            if palabra_clave == "":
+                palabra_clave = None
+            if password_management.store_information(nombre, contraseña, palabra_clave, password)== "Keyword or account already exists":
+                print("La cuenta ya existe")
+                logging.info("[Agregar] - La cuenta ya existe")
+            else:
+                print("Cuenta agregada exitosamente!")
+                logging.info("[Agregar] - Cuenta agregada exitosamente")
+        except:
+            print("Error al agregar cuenta")
+            logging.warning("[Agregar] - Error al agregar cuenta")
     elif comando.lower() == "borrar":
-        print("Borrando...")
-        nombre = input("Ingresa el login o keyword de la cuenta a borrar: ") #o palabra clave?
-        print(password_management.delete_information(nombre, password))
+        try:
+            print("Borrando...")
+            nombre = input("Ingresa el login o keyword de la cuenta a borrar: ") #o palabra clave?
+            print(password_management.delete_information(nombre, password))
+        except:
+            print("Error al borrar cuenta")
+            logging.warning("[Borrar] - Error al borrar cuenta")
     elif comando.lower() == "actualizar":
-        print("Actualizando...")
-        nombre = input("Ingresa el login o keyword de la cuenta a actualizar: ")
-        new_pass = input("Ingresa la nueva contraseña: ")
-        print(password_management.update_information(nombre, new_pass, password))
+        try:
+            print("Actualizando...")
+            nombre = input("Ingresa el login o keyword de la cuenta a actualizar: ")
+            new_pass = input("Ingresa la nueva contraseña: ")
+            print(password_management.update_information(nombre, new_pass, password))
+        except:
+            print("Error al actualizar cuenta")
+            logging.warning("[Actualizar] - Error al actualizar cuenta")
     elif comando.lower() == "recuperar":
-        print("Recuperando...")
-        nombre = input("Ingresa el login o keyword de la cuenta a recuperar: ")
-        print(password_management.get_information(nombre, password))
+        try:
+            print("Recuperando...")
+            nombre = input("Ingresa el login o keyword de la cuenta a recuperar: ")
+            print(password_management.get_information(nombre, password))
+        except:
+            print("Error al recuperar cuenta")
+            logging.warning("[Recuperar] - Error al recuperar cuenta")
     elif comando.lower() == "generar":
         try:
             largo = int(input("Ingresa el largo de la contraseña: "))
